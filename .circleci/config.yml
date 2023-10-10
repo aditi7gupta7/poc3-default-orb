@@ -1,16 +1,19 @@
-version: 2
+version: 2.1
+
+orbs:
+  java-build: My-Demo-Orb/.circleci/config.yml
+  
 jobs:
   build:
     executor: java-executor
-    steps:
-      - checkout
-      - java-build/build:
-          version: 2.1
     environment:
       JVM_OPTS: -Xmx3200m
+    steps:
+      - java-build/build
+    
 workflows:
   version: 2
-  build-and-deploy:
+  build-deploy:
     jobs:
       - build
 
