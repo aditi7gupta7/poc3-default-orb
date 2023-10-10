@@ -13,7 +13,3 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
-          name: Deploy to production
-          requires:
-            - build
