@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  java-build: My-Demo-Orb/.circleci/config.yml
+  java-build: My-Demo-Orb/java-build@1.0
   
 jobs:
   build:
