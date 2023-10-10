@@ -1,12 +1,19 @@
-version: 2.1
-orbs:
-  gradle: circleci/gradle@3.0.0
-
+version: 2
 jobs:
   build:
-    executor: gradle/default
+    executor: java-executor
+    steps:
+      - checkout
+      - java-build/build:
+          version: 2.1
     environment:
       JVM_OPTS: -Xmx3200m
-    steps:
-      - gradle/build:
-          version: 7.2
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          name: Deploy to production
+          requires:
+            - build
